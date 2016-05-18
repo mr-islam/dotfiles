@@ -4,8 +4,8 @@ export TERM="xterm-256color"
 # Powerlevel9k
 source  ~/powerlevel9k/powerlevel9k.zsh-theme
 POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir root_indicator)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs root_indicator)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode)
 
 # Anaconda pytho
 export PATH="/home/naved/anaconda3/bin:$PATH"
@@ -38,3 +38,5 @@ compinit
 
 #should fix vim mode delay
 export KEYTIMEOUT=1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

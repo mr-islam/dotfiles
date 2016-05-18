@@ -94,3 +94,5 @@ function pre_prompt {
 
 
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
