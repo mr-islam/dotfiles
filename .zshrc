@@ -3,6 +3,7 @@ export TERM="xterm-256color"
 
 # Powerlevel9k
 source  ~/powerlevel9k/powerlevel9k.zsh-theme
+# POWERLEVEL9K_MODE='awesome-patched'
 POWERLEVEL9K_MODE='awesome-patched'
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs root_indicator)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode)
