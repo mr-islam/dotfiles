@@ -65,34 +65,4 @@ BAK000='\e[48;5;000m'       # Dark Grey
 BAKBRD='\e[48;5;130m'       # Bright Red
 BAKBBR='\e[48;5;166m'       # Brightest Red
 
-#PROMPT
-# cool prompt stuff
-# based on a function found in bashtstyle-ng 5.0b1
-# Original author Christopher Roy Bratusek (http://www.nanolx.org)
-# Last arranged by zach Fri Jan 18 17:03:08 EST 2013
-function pre_prompt {
-	    sPWD=$(echo -n $PWD | sed -e "s:^$HOME: ~:" -e "s:/: ⮁ :g" -e "s|:|/|g") #Should now properly sed home directory path
-	        nPWD="$sPWD "
-		    sHost=$(echo $HOSTNAME | cut -f 1 -d .)
-		        p=$(echo -n ".....$USER.$sHost...$sPWD")
-			    let pSize=${#p}
-			        let fillsize=$COLUMNS-$pSize
-				    fill=""
-				        while [[ $fillsize > 0 ]]; do
-						        fill="$fill "
-							        let fillsize=$fillsize-1
-								    done
-								        if [[ $fillsize < 0 ]]; then
-										        let cutt=1-$fillsize
-											        nPWD=" $(echo -n $sPWD | sed -E "s/(^.{$cutt})(.*)/…\2/") "
-												    fi
-											    }
-
-											    PROMPT_COMMAND=pre_prompt
-
-											    PS1="\`if [ \$? = 0 ]; then echo \"${TXTBLK}${BAK241} \$ ${TXT236}${BAKBLK}\"; else echo \"${TXTBLK}${BAKRED} ! ${TXTBRD}${BAKBLK}\"; fi\`⮀${TXTGRN}${BAKBLK} \u${BLDBLK}@${BLDCYN}\h ${TXTBLK}${BAKBLU}⮀${TXTRST}${BAKBLU}${BLDBLU}\$nPWD\${fill}${TXTRST}\n"
-
-
-
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

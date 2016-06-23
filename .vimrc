@@ -13,15 +13,15 @@ Plug 'Raimondi/delimitMate'
 
 Plug 'scrooloose/syntastic'
 
-Plug 'tomasr/molokai',
+"Plug 'tomasr/molokai',
 
-Plug 'jnurmine/Zenburn'
+"Plug 'jnurmine/Zenburn'
 
 Plug 'altercation/vim-colors-solarized'
 
-Plug 'whatyouhide/vim-gotham'
+"Plug 'whatyouhide/vim-gotham'
 
-Plug 'sjl/badwolf'
+"Plug 'sjl/badwolf'
 
 Plug 'rking/ag.vim'
 
@@ -31,18 +31,25 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'vim-airline/vim-airline'
 
-
-"Plug 'powerline/powerline' 
-
-
 Plug 'sjl/gundo.vim' 
 
+"RUBY
+
+Plug 'ervandew/supertab'
+
+Plug 'tpope/vim-endwise'
+
+Plug 'tpope/vim-bundler'
+
+Plug 'vim-ruby/vim-ruby'
+
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
 "" COLORS
 syntax on
-colorscheme gotham 
+colorscheme solarized
 call togglebg#map("<F5>")
 
 "" BINDING
@@ -79,8 +86,8 @@ let mapleader=","
 "" FORMATTING 
 set number
 set relativenumber
-set tabstop=4	      " number of visual spaces per TAB
-set softtabstop=4	  " number of spaces in tab when editing
+"set tabstop=4	      " number of visual spaces per TAB
+"set softtabstop=4	  " number of spaces in tab when editing
 set expandtab         " tabs are spaces
 filetype on
 
@@ -134,7 +141,12 @@ set encoding=utf-8
 "" let g:syntastic_check_on_open = 1
 "" let g:syntastic_check_on_wq = 0
 
-"Airline
-let g:airline_detect_spell=1
-let g:airline_powerline_fonts=1
-
+"Airline wiki
+let g:airline_detect_spell = 1
+let g:airline_powerline_fonts = 1
+set ttimeoutlen=10
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:bufferline_echo = 0
+set noshowmode
+let g:airline_theme='luna'
