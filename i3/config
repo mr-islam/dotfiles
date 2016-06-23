@@ -16,9 +16,11 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # lock
-#bindsym $mod+Shift+x exec i3lock --color 475263
-#my try from reddit
-bindsym $mod+Shift+x exec .config/i3lock/lock.sh
+#i3-lock-fancy
+bindsym $mod+Shift+x exec lock -f Inconsolata -p
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -50,28 +52,40 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # NAVED EDIT HERE
-set $workspace1 "1 "
-set $workspace2 "2 "
-set $workspace3 "3 "
-set $workspace4 "4 "
-set $workspace5 "5 "
-set $workspace6 "6 "
-set $workspace7 "7 "
-set $workspace8 "8 "
-set $workspace9 "9 "
-set $workspace10 "10 "
+set $workspace1 "ا"
+set $workspace2 "ب"
+set $workspace3 "ت"
+set $workspace4 "ث"
+set $workspace5 "ج"
+set $workspace6 "ح"
+set $workspace7 "خ"
+set $workspace8 "د"
+set $workspace9 "ذ"
+set $workspace10 "ر"
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $workspace1
-bindsym $mod+Shift+2 move container to workspace $workspace2
-bindsym $mod+Shift+3 move container to workspace $workspace3
-bindsym $mod+Shift+4 move container to workspace $workspace4
-bindsym $mod+Shift+5 move container to workspace $workspace5
-bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace $workspace7
-bindsym $mod+Shift+8 move container to workspace $workspace8
-bindsym $mod+Shift+9 move container to workspace $workspace9
-bindsym $mod+Shift+0 move container to workspace $workspace10
+# move focused container to workspace, and go along
+bindsym $mod+Shift+1 move container to workspace $workspace1; workspace $workspace1 
+bindsym $mod+Shift+2 move container to workspace $workspace2; workspace $workspace2 
+bindsym $mod+Shift+3 move container to workspace $workspace3; workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4; workspace $workspace4 
+bindsym $mod+Shift+5 move container to workspace $workspace5; workspace $workspace5 
+bindsym $mod+Shift+6 move container to workspace $workspace6; workspace $workspace6 
+bindsym $mod+Shift+7 move container to workspace $workspace7; workspace $workspace7 
+bindsym $mod+Shift+8 move container to workspace $workspace8; workspace $workspace8 
+bindsym $mod+Shift+9 move container to workspace $workspace9; workspace $workspace9 
+bindsym $mod+Shift+0 move container to workspace $workspace10; workspace $workspace10 
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $workspace1
+bindsym $mod+Ctrl+2 move container to workspace $workspace2
+bindsym $mod+Ctrl+3 move container to workspace $workspace3
+bindsym $mod+Ctrl+4 move container to workspace $workspace4
+bindsym $mod+Ctrl+5 move container to workspace $workspace5
+bindsym $mod+Ctrl+6 move container to workspace $workspace6
+bindsym $mod+Ctrl+7 move container to workspace $workspace7
+bindsym $mod+Ctrl+8 move container to workspace $workspace8
+bindsym $mod+Ctrl+9 move container to workspace $workspace9
+bindsym $mod+Ctrl+0 move container to workspace $workspace10
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -114,8 +128,10 @@ mode "resize" {
 # resize mode
 bindsym $mod+r mode "resize"
 
-set $bg-color 	         #2f343f
-set $inactive-bg-color   #2f343f
+#set $bg-color 	         #2f343f
+set $bg-color            #002B36
+#set $inactive-bg-color   #2f343f
+set $inactive-bg-color   #002B36
 set $text-color          #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
@@ -143,7 +159,6 @@ bar {
 	}
 }
 
-
 # sticky window
 bindsym $mod+Shift+s sticky toggle
 
@@ -157,11 +172,8 @@ bindsym $mod+Shift+s sticky toggle
 #assign [class="Skype"] $workspace9
 #assign [class="qTox"] $workspace9
 assign [class="FireFox"] $workspace1
-assign [class="Terminator"] $workspace2
 assign [class="Thunar"] $workspace10
-assign [class="jetbrains-pycharm-ce"] $workspace3
 assign [class="Evince"] $workspace4
-assign [class="Steam"] $workspace9
 assign [class="mpv"] $workspace5
 
 # ONE DAY BRING IN 'XF86AudioRaiseVolume' THESE KIND OF BINDINGS!
@@ -170,31 +182,42 @@ bindcode $mod+96 exec "amixer set Master 3%+"
 bindcode $mod+95 exec "amixer set Master 3%-"
 bindcode $mod+76 exec "amixer -q sset Master toggle"
 
-#brightness works
-bindcode $mod+71 exec "xbacklight -5"
-bindcode $mod+72 exec "xbacklight +5"
+#brightness 
+bindcode $mod+71 exec "xbacklight -3"
+bindcode $mod+72 exec "xbacklight +3"
 
 bindsym $mod+Shift+f exec firefox
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec urxvtc 
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
+bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 450 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18" #probably redundant-- needs cleaning as real config is in .Xresources
 
-exec_always --no-startup-id feh --bg-scale /home/naved/wallpaper.jpg
-
-bindsym $mod+73 exec scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/shots/'
+#bindcode $mod+73 exec scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/shots/'
+bindcode $mod+73 exec imgur-screenshot 
 
 # Keys
 exec_always xmodmap -e "clear lock" #disable caps lock switch
 exec_always xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
 #on start-up
-exec xrdb -load ~/.Xresources
-exec --no-startup-id compton -f
-exec firefox
-exec terminator
+exec                    xrdb -load ~/.Xresources #for Rofi and urxvt config
+exec                    firefox
+exec --no-startup-id    urxvtd -q -o -f
+exec --no-startup-id    compton -f
+exec --no-startup-id    python code/eyecare/eyecare.py
+
 exec_always --no-startup-id dunst
-exec_always --no-startup-id python code/eyecare/eyecare.py
+exec_always --no-startup-id feh --bg-scale /home/naved/wallpaper.jpg
+
+# Open specific applications in floating mode
+# for_window [class="Lxappearance"] floating enable sticky enable border normal
+# for_window [class="manjaro-settings-manager-gui"] floating enable border normal
 
 #i3-gaps efforts
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
+
+gaps inner 15 
+gaps outer 10 
+
+smart_gaps on 
+smart_borders on
