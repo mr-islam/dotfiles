@@ -24,6 +24,7 @@ Plug 'fmoralesc/vim-pad'
 Plug 'vim-pandoc/vim-pandoc' "pandoc
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc-after'
+Plug 'mzlogin/vim-markdown-toc'
 
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-colors-pencil'

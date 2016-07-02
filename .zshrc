@@ -1,14 +1,14 @@
 # 256-bit color mode
 export TERM="xterm-256color"
 
-if which ruby >/dev/null && which gem >/dev/null; then
-            PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
-    fi
+#if which ruby >/dev/null && which gem >/dev/null; then
+#            PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+#    fi
 
 # Powerlevel9k
 source  ~/powerlevel9k/powerlevel9k.zsh-theme
 POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs dir root_indicator)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs dir)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
 # Anaconda pytho
@@ -43,4 +43,4 @@ compinit
 #should fix vim mode delay
 export KEYTIMEOUT=1
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
