@@ -8,7 +8,7 @@ if which ruby >/dev/null && which gem >/dev/null; then
 # Powerlevel9k
 source  ~/powerlevel9k/powerlevel9k.zsh-theme
 POWERLEVEL9K_MODE='awesome-patched'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir root_indicator)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs dir root_indicator)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
 # Anaconda pytho

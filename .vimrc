@@ -1,50 +1,51 @@
 "" VIM-PLUG
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-
-Plug 'tmhedberg/SimpylFold'
-
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'   "autocomplete engine
+Plug 'scrooloose/syntastic'     "syntax checker
 
 Plug 'hynek/vim-python-pep8-indent'
 
-Plug 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'     "insert bracket/quote
+Plug 'tpope/vim-surround'       "easy delete bracket/quote
 
-Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'       "git
 
-"Plug 'tomasr/molokai',
+Plug 'vim-airline/vim-airline'  "status bar
 
-"Plug 'jnurmine/Zenburn'
+"Plug 'plasticboy/vim-markdown'  "markdown utility
 
-Plug 'altercation/vim-colors-solarized'
+Plug 'godlygeek/tabular'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'junegunn/goyo.vim'
+"Plug 'airblade/vim-gitgutter'
 
-"Plug 'whatyouhide/vim-gotham'
+Plug 'fmoralesc/vim-pad'
+Plug 'vim-pandoc/vim-pandoc' "pandoc
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc-after'
 
-"Plug 'sjl/badwolf'
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-colors-pencil'
+Plug 'reedes/vim-thematic'
 
-Plug 'rking/ag.vim'
-
-Plug 'ctrlpvim/ctrlp.vim'
-
-Plug 'tpope/vim-fugitive'
-
-Plug 'vim-airline/vim-airline'
-
-Plug 'sjl/gundo.vim' 
-
-"RUBY
-
-Plug 'ervandew/supertab'
-
-Plug 'tpope/vim-endwise'
-
-Plug 'tpope/vim-bundler'
-
-Plug 'vim-ruby/vim-ruby'
+Plug 'mzlogin/vim-markdown-toc'
 
 Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+"Plug 'whatyouhide/vim-gotham'
+"Plug 'sjl/badwolf'
 
+"Plug 'myusuf3/numbers.vim'      "smart line numbering
+"
+"Plug 'rking/ag.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+
+"Plug 'sjl/gundo.vim'
+"Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+"Plug 'tmhedberg/SimpylFold'
+"
 call plug#end()
 
 "" COLORS
@@ -56,14 +57,6 @@ call togglebg#map("<F5>")
 
 " saving without permissions
 ca w!! w !sudo tee "%"
-
-" move to beginning/end of line
-nnoremap B ^
-nnoremap E $
-
-" $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
 
  " split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -83,17 +76,18 @@ nnoremap <leader>s :mksession<CR>
 "leader key
 let mapleader=","
 
-"" FORMATTING 
+"" FORMATTING
 set number
-set relativenumber
-"set tabstop=4	      " number of visual spaces per TAB
-"set softtabstop=4	  " number of spaces in tab when editing
+"set relativenumber
+set tabstop=4	      " number of visual spaces per TAB
+set softtabstop=4	  " number of spaces in tab when editing
 set expandtab         " tabs are spaces
+"set shiftwidth=2
 filetype on
 
 "" UI & CONFIG
 set number            " line numbers
-set relativenumber    " line numbers realtive to current line
+"set relativenumber    " line numbers realtive to current line
 set cursorline        " highlight current line
 set wildmenu          " visual autocomplete for command menu
 set lazyredraw        " redraw only when we need to.
@@ -103,7 +97,7 @@ set showmatch         " highlight matching brackets, etc.
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 " turn off search highlight with <comma><space>
-nnoremap <leader><space> :nohlsearch<CR> 
+nnoremap <leader><space> :nohlsearch<CR>
 
 " folding
 set foldenable          " enable folding
@@ -150,3 +144,12 @@ let g:airline_powerline_fonts = 1
 let g:bufferline_echo = 0
 set noshowmode
 let g:airline_theme='luna'
+
+function! TrimWhiteSpace()
+    %s/\s\+$//e
+endfunction
+autocmd BufWritePre     * :call TrimWhiteSpace()
+
+"" PANDOC SETUP
+let g:pandoc#syntax#conceal#urls = 1
+
